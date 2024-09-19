@@ -1,3 +1,4 @@
+
 //javascript functions
 function greet(){
     console.log("Hello World");
@@ -49,4 +50,13 @@ numbers.forEach((element,index) => {
 
 
 
+
+
+//JavaScript functions
+
+function greet() {
+  console.log("Hello World");
+}
+//calling function
+greet();
 
