@@ -25,6 +25,8 @@ numbers[1] = "Hello";
 console.log(numbers);
 //template literals ''
 
+
+
 //objects
 let person = {
     fistName:"josh",

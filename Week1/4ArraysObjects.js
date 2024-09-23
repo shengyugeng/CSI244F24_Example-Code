@@ -30,6 +30,8 @@ const person= {
     lastName: "Doe",
     age:50,
 };
+
+
 //we can extract out the age from an object
 
 const destructuring = ({age}) => {

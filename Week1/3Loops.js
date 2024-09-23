@@ -7,6 +7,8 @@ for (let car of cars){
     console.log(car);
 }
 
+
+
 //for in goes through objects using key: value
 const person = {fName:"john", lName:"Doe", age:25}
 for (let x in person){

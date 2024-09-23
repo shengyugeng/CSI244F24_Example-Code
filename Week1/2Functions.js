@@ -52,6 +52,8 @@ numbers.forEach((element,index) => {
 
 
 
+
+
 //JavaScript functions
 
 function greet() {
