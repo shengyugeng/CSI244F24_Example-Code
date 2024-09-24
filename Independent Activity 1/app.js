@@ -1,10 +1,10 @@
 //================Variables and Data Types:
 //Variables can be declared using let, const, or var
 let name1 = "John Doe"; // string data type, can be reassigned
-const age = 30; //number data type, cannot be reassigned
+const age1 = 30; //number data type, cannot be reassigned
 var isStudent = true; //boolean daty type, older way of declaring variables
 // teplate literals allow for easy string interpolation
-console.log(`Name: ${name1}, Age: ${age}, Is student: ${isStudent}`);
+console.log(`Name: ${name1}, Age: ${age1}, Is student: ${isStudent}`);
 
 // 2 functions:
 // a, function declaration:
@@ -134,3 +134,107 @@ const car = {
 for(let key in car){
     console.log(`${key}: ${car[key]}`);
 }
+// part 4 destructuring, spread, and rest operators
+//1. object destructuring
+const PersonName = {firstName: "John", lastName:"Doe", age: 30};
+const{firstName,lastName} = PersonName;
+console.log(firstName,lastName);
+// assigning to different variable names
+const{firstName: fName, lastName:lName} = PersonName;
+console.log(fName,lName);
+//setting default values
+const { age, occupation = "Unknown"} = PersonName;
+console.log(age,occupation);
+
+//2. Array Destructuring:
+//basic array destructuring
+const colors = ["red", "green", "blue"];
+const [firstColor, secondColor] = colors;
+console.log(firstColor, secondColor); //output : red green
+//skipping elements
+const[ , , thirdColor] = colors;
+console.log(thirdColor); //output: blue
+//swapping variables
+let a =1, b= 2;
+[a,b] = [b,a];
+console.log(a,b); // output:2 1
+
+//3 spread operator:
+//1. combining arrays
+console.log("combining arrays")
+const arr1 = [1,2,3];
+const arr2 = [4,5,6];
+const combinedArray = [...arr1, ...arr2];
+console.log(combinedArray); //output: [1,2,3,4,5,6]
+
+//copying arrays
+console.log("copying arrays")
+const originalArray = [1,2,3];
+const copedArray = [...originalArray];
+console.log(copedArray);
+//spreading into function arguments
+console.log("spreading into function arguments")
+function sum1(x,y,z){
+    return x+y+z;
+
+}
+const numbers4 = [1,2,4];
+console.log(sum1(...numbers4)); //output: 6
+
+//spreading object properties
+console.log("spreading object properties");
+const basicInfo = {firstName: "John", lastName:"Doe"};
+const datailedInfo = {...basicInfo, age: 30, occupation: "Developer"}
+console.log(datailedInfo);
+
+//rest operator
+console.log("Rest Operator")
+function sum3(... numbers){
+    return numbers.reduce((total, num)=> total + num, 0);
+
+}
+console.log(sum3(1,2,3,4));//output 10
+// rest in array destructuring
+console.log("rest in array destructuring")
+const[first,second, ... rest] = [1,2,3,4,5];
+console.log(first, second, rest);// output: 1 2 [3,4,5]
+//rest in object destructuring
+console.log("rest in object destructuring");
+const {a1 ,b1 , ...others} = {a1:1, b1:2, c:3, d:4};
+console.log(a,b,others); //output: 1 2 {c:3, d:4}
+//part 4 practice exercises
+console.log("part 4 practice exercises")
+console.log("Number 1")
+const PersonInfo = { name4: "Alice", age2: 25, city: "New York", country: "USA" }
+const {name4,age2, ...location} = PersonInfo;
+console.log(name4); //"Alice"
+console.log(age2);  //"25"
+console.log(location); //{ city: "New York", country: "USA" }
+console.log("Number 2")
+const numbers5 = [1,2,3,4,5];
+const[a2,b2, ...remaining] = numbers5;
+console.log(a2);
+console.log(b2);
+console.log(remaining);
+console.log("Number 3")
+function printPersonInfo({name7,age,occupation = "unknown"}){
+    console.log(`Name: ${name7}`);
+    console.log(`Age: ${age}`)
+    console.log(`occupation: ${occupation}`);
+}
+
+const person3 = {name7:"Alice", age: 30, occupation:"engineer"};
+const person4 = {name7: "Bob", age: 45};
+
+printPersonInfo(person3);
+printPersonInfo(person4);
+
+
+
+
+
+
+
+
+
+
