@@ -50,12 +50,25 @@ function calculateArea(length,width){
 const area = calculateArea(5,3);
 console.log(`The area of the rectangle is: ${area}`);
 
-// I don't know how create an object 
+
 /*
 //2. Create an object representing a movie with properties for title, 
 director, and releaseYear. Add a method to the object that returns 
 a string with the movie's details.
 */
+const movie = {
+    title: "Inception",
+    director: "Christopher Nolan",
+    releaseYear: 2010,
+
+    // Method to return the movie's details
+    getDetails() {
+        return `Title: ${this.title}, Director: ${this.director}, Release Year: ${this.releaseYear}`;
+    }
+};
+
+// Calling the method to get movie details
+console.log(movie.getDetails());
 
 // 3. Convert the following function to an arrow function:
 const multiply = (a,b) => {
@@ -229,6 +242,90 @@ const person4 = {name7: "Bob", age: 45};
 printPersonInfo(person3);
 printPersonInfo(person4);
 
+//part 5 callbacks in javascript
+//Basic callback example
+console.log("Basic Callback Example");
+function greet(name,callback){
+    console.log('Hello  ' + name);
+    callMe();
+}
+function callMe(){
+    console.log('I am callback function');
+}
+greet('John', callMe());
+
+//callbacks with arguments
+console.log("callbacks with arguments")
+function calculateSquare(numberf,callback){
+    const result = numberf * numberf;
+    callback(result);
+}
+function displayResult(result){
+    console.log('the square is ' + result);
+}
+calculateSquare(5,displayResult);
+
+console.log("Anonymous Function as Callback:");
+setTimeout(function(){
+    console.log('the message is show after 3 seconds');
+}, 3000);
+console.log("Error handling in callbacks");
+function divideNumbers(a,b,callback){
+    if(b===0){
+        callback(new Error('cannot divide by zero'), null);
+    }else{
+        callback(null, a/b);
+    }
+
+}
+divideNumbers(10,2,function(error,result){
+    if(error){
+        console.error('Error:', error.message);
+    }else{
+        console.log('result:', result);
+    }
+});
+
+//part 5 practice exercises
+console.log("Number 1");
+function fetchUserData(userId, callback){
+    console.log(`Fetching data for user with ID: ${userId}`);
+    //SIMULATE A DALAY OF 2 SECONDS USING SETtimeout
+    setTimeout(()=>{
+        //SIMULATED USER DATA
+        const userData = {
+            id: userId,
+            name: "John Doe",
+            age:30,
+            occupation:"Software Engineer"
+        };
+        //call the callback function with the fetched user data
+        callback(userData);
+    },2000); // 2 seconds dalay
+}
+// Traditional function declaration for the callback
+function displayUserDate(user){
+    console.log("User Data:");
+    console.log(`ID: ${user.id}`)
+    console.log(`Name: ${user.name}`);
+    console.log(`Age: ${user.age}`);
+    console.log(`occupation: ${user.occupation}`);
+
+}
+
+//fetching user data and displayint it
+fetchUserData(123,displayUserDate);
+
+
+
+// Arrow function for the callback
+fetchUserData(102, (user) => {
+    console.log("User Data (Arrow Function):");
+    console.log(`ID: ${user.id}`);
+    console.log(`Name: ${user.name}`);
+    console.log(`Age: ${user.age}`);
+    console.log(`Occupation: ${user.occupation}`);
+});
 
 
 
